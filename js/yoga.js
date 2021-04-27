@@ -41,7 +41,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
     // Timer
 
-    let deadline = '2021-04-21'; // конечная дата
+    let deadline = '2021-12-31'; // конечная дата
 
     function getTimeRemaining (endTime) {
         let t = Date.parse(endTime) - Date.parse(new Date()), 
@@ -108,6 +108,45 @@ window.addEventListener('DOMContentLoaded', function() {
 
     setClock('timer', deadline); 
     // эта функция выставляет и запускает наши часы
+
+                                                        // modal
+
+    let more = document.querySelector('.more'),
+        overlay = document.querySelector('.overlay'),
+        close = document.querySelector('.popup-close'),
+        btntabs = document.getElementsByClassName('description-btn')[0]; //для кнопки в табах
+
+    btntabs.addEventListener('click', function () {
+        overlay.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+        
+
+    });
+
+    more.addEventListener('click', function () {
+        overlay.style.display = 'block';
+        // this.classList.add('more-splash');
+        document.body.style.overflow = 'hidden'; //запрет прокрутки страницы во время режима открытого мадального окна
+    });
+
+    close.addEventListener('click', function () {
+        overlay.style.display = 'none';
+        // more.classList.add('more-splash');
+        document.body.style.overflow = ''; //отмена запрета прокрутки при закрытии модального окна
+    });
     
 });
+
+
+
+
+
+// let age = document.getElementById('age');
+ 
+// function showUser (surname, name) {
+//         console.log(this);
+//          alert ("Пользователь " + surname + " " + name + ", его возраст " + this.value);
+// }
+ 
+// showUser.apply(age, ["Горький","Максим"]);
 
