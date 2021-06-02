@@ -114,10 +114,10 @@
 				</div>
 			</div>
 
-			<form action="#" class="dima">
+			<!-- <form action="#" class="dima">
 				<label for="age"> Возраст  </label>
 				<input id="age" type = 'number' placeholder="Возраст пользователя" value="30" required name="age">  
-			</form>
+			</form> -->
 
 			<div class="timer">
 				
@@ -193,21 +193,26 @@
 					<span id="total">20456</span>
 				</div>
 			</div>
-			<div class="contact" id="contacts">
-				<div class="contact-img">
-					<img src="img/letter.png" alt="letter">
-				</div>
-				<div class="contact-form">
-					<div class="contact-form-title">
-						Мы с вами свяжемся
+
+				<div class="contact" id="contacts">
+					<div class="contact-img">
+						<img src="img/letter.png" alt="letter">
 					</div>
-					<form id="form">
-						<input required type="email" placeholder="Ваша почта">
-						<input required type="tel" placeholder="Ваш телефон">
-						<button type="submit">Отправить</button>
-					</form>
+					<div class="contact-form">
+						<div class="contact-form-title">
+							Мы с вами свяжемся
+						</div>
+						<form id="form">
+							<input required type="email" placeholder="Ваша почта" name="eletter">
+							<input required type="tel" placeholder="Ваш телефон" name="phone2">
+							<button type="submit">Отправить</button>
+						</form>
+					</div>
 				</div>
-			</div>
+
+				
+
+
 		</div>
 
 		<footer>
@@ -243,7 +248,8 @@
 				<div class="popup-close">&times;
 				</div>
 				<div class="popup-title">
-				Форма обратной связи</div>
+				Форма обратной связи
+				</div>
 					<div class="popup-form">	
 						<form action="#" class="main-form">
 							<div class="popup-form-header">
@@ -261,6 +267,6 @@
 	 		</div>
 	</div>
 
-	<script src="js/yoga.js"> </script>
+	<script src="js/yogaPromise.js"> </script>
 </body>
 </html>

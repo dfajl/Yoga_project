@@ -140,7 +140,7 @@ window.addEventListener('DOMContentLoaded', function() {
                                                         // Form
     let message = {
         loading: 'Загрузка',
-        success: 'Спасибо! Мы свяжемся с вами позже!',
+        success: 'Thank you! We will get in touch with you later!',
         failure: 'Что-то пошло не так :('
     };
 
@@ -153,6 +153,8 @@ window.addEventListener('DOMContentLoaded', function() {
         
         statusMessage.classList.add('status');
 
+        
+
     form.addEventListener('submit', function(event) { 
         // обрати внимание: обработчик события навешиваем не на кнопку "отправить", а на саму ФОРМУ, то есть, событие происходит лишь тогда, когда отправляется форма
 
@@ -161,39 +163,46 @@ window.addEventListener('DOMContentLoaded', function() {
 
         form.appendChild(statusMessage);
 
-        let request = new XMLHttpRequest();
-        request.open('POST', 'server.php');
-        request.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+        let formData = new FormData(form); 
 
+        function postData (data) {
+
+            return new Promise (function (resolve, reject) {
+                let request = new XMLHttpRequest();
+
+                request.open('POST', 'server.php');
+
+                request.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+                request.send(data);
+
+                request.onreadystatechange =  function() {
+                    if (request.readyState < 4) {
+                        resolve();
+                    } else if (request.readyState === 4 && request.status == 200) {
+                       resolve();
+                    } else {
+                        reject();
+                    }
+                    
+                };
         
-        let formData = new FormData(form); //таким образом я получил все данные, которые ввел пользователь во все наши инпуты в данной форме
+                
+            });
 
-        request.send(formData);
-
-
-        // let obj = {};
-        // formData.forEach(function(value, key) {
-        //     obj[key] = value;
-        // });
-        // let json = JSON.stringify(obj);
-
-        // request.send(json); для передачи данных в формате JSON
-        
-
-        request.addEventListener('readystatechange', function () {
-            if (request.readyState < 4) {
-                statusMessage.innerHTML = message.loading;
-            } else if (request.readyState === 4 && request.status == 200) {
-                statusMessage.innerHTML = message.success;
-            } else {
-                statusMessage.innerHTML = message.failure;
-            }
-            
-        });
-
-        for (let i = 0; i < input.length; i++) {
-            input[i].value = '';
         }
+
+        function clearInput () {
+            for (let i = 0; i < input.length; i++) {
+            input[i].value = '';
+            } 
+        }
+
+        postData(formData)
+            .then ( ()=> statusMessage.innerHTML = message.loading)
+            .then ( ()=> statusMessage.innerHTML = message.success)
+            .catch ( ()=> statusMessage.innerHTML = message.failure)
+            .then (clearInput)
 
     }); 
 

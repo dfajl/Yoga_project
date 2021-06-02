@@ -46,6 +46,12 @@
   margin-left: 20px;
   padding: 0 20px;
 }
+.status {
+  width: 300px;
+  height: 100px;
+  color: red;
+  font-size: 15px;
+}
 a {
   color: inherit;
   text-decoration: none;
