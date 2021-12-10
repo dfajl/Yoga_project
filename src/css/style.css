@@ -48,7 +48,7 @@
 }
 .status {
   width: 300px;
-  height: 100px;
+  margin-bottom: 10px;
   color: red;
   font-size: 15px;
 }
