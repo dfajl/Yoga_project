@@ -32,10 +32,14 @@ function form () {
 					method: 'POST',
 					body: formData
                 }); 
-				
+				 
 				if (response.ok) {
                 	statusMessage.innerHTML = message.success;
             	} 
+
+				if (response.status == 405) {
+					statusMessage.innerHTML = 'Failed to load resource: the server responded with a status of 405 ()';
+				}
 
             } catch (error) {
 				statusMessage.innerHTML = message.failure;
@@ -84,6 +88,10 @@ function form () {
 			if (response.ok) {
 				statusMessage.innerHTML = message.success;
 			} 
+
+			if (response.status == 405) {
+				statusMessage.innerHTML = 'Failed to load resource: the server responded with a status of 405 ()';
+			}
 
 		} catch (error) {
 			statusMessage.innerHTML = message.failure; 

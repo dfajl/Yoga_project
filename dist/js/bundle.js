@@ -171,16 +171,20 @@ function form() {
                 statusMessage.innerHTML = message.success;
               }
 
-              _context.next = 15;
+              if (response.status == 405) {
+                statusMessage.innerHTML = 'Failed to load resource: the server responded with a status of 405 ()';
+              }
+
+              _context.next = 16;
               break;
 
-            case 11:
-              _context.prev = 11;
+            case 12:
+              _context.prev = 12;
               _context.t0 = _context["catch"](4);
               statusMessage.innerHTML = message.failure;
               errorMessage.innerHTML = _context.t0;
 
-            case 15:
+            case 16:
               for (i = 0; i < input.length; i++) {
                 input[i].value = '';
               }
@@ -190,12 +194,12 @@ function form() {
                 form.removeChild(errorMessage);
               }, 3000);
 
-            case 17:
+            case 18:
             case "end":
               return _context.stop();
           }
         }
-      }, _callee, null, [[4, 11]]);
+      }, _callee, null, [[4, 12]]);
     }));
 
     return function (_x) {
@@ -236,16 +240,20 @@ function form() {
                 statusMessage.innerHTML = message.success;
               }
 
-              _context2.next = 17;
+              if (response.status == 405) {
+                statusMessage.innerHTML = 'Failed to load resource: the server responded with a status of 405 ()';
+              }
+
+              _context2.next = 18;
               break;
 
-            case 13:
-              _context2.prev = 13;
+            case 14:
+              _context2.prev = 14;
               _context2.t0 = _context2["catch"](6);
               statusMessage.innerHTML = message.failure;
               errorMessage.innerHTML = _context2.t0;
 
-            case 17:
+            case 18:
               for (i = 0; i < inputContacts.length; i++) {
                 inputContacts[i].value = '';
               }
@@ -255,12 +263,12 @@ function form() {
                 formContacts.removeChild(errorMessage);
               }, 3000);
 
-            case 19:
+            case 20:
             case "end":
               return _context2.stop();
           }
         }
-      }, _callee2, null, [[6, 13]]);
+      }, _callee2, null, [[6, 14]]);
     }));
 
     return function (_x2) {
